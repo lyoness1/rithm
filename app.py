@@ -13,9 +13,11 @@ def hello_world():
 @app.route('/jokes', methods=['GET'])
 def get_jokes():
     joke = Joke()
-    jokes = []
+    jokes = set()
     for i in range(20):
-        jokes.append(joke.get_random())
+        rand_joke = joke.get_random()
+        if rand_joke not in jokes:
+            jokes.add(rand_joke)
     return render_template('home.html', jokes=jokes)
 
 
