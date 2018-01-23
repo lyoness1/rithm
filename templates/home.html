@@ -5,8 +5,8 @@
     <h3>Random Jokes</h3>
     <button id="reload-jokes">Reload Joke List</button>
     <ul id="joke-list">
-        {% for joke in jokes %}
-        <li>{{ joke }}</li>
+        {% for id, joke in jokes.items() %}
+        <li>{{ joke }}</li><button class="up-vote">Up Vote</button><button class="down-vote">Down Vote</button>
         {% endfor %}
     </ul>
 
