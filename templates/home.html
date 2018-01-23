@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="content">
+    <ul>
+        {% for joke in jokes %}
+            <li>{{ joke }}</a></li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+{% endblock %}

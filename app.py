@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import requests
 
 from model import Joke
@@ -13,7 +13,10 @@ def hello_world():
 @app.route('/jokes', methods=['GET'])
 def get_jokes():
     joke = Joke()
-    return joke.get_random()
+    jokes = []
+    for i in range(20):
+        jokes.append(joke.get_random())
+    return render_template('home.html', jokes=jokes)
 
 
 if __name__ == '__main__':

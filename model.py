@@ -9,6 +9,6 @@ class Joke():
 		return joke_data['joke']
 
 
-class User()
+class User():
 	"""A class for users"""
 	pass
