@@ -2,9 +2,11 @@
 {% block content %}
 
 <div class="content">
-    <ul>
+    <h3>Random Jokes</h3>
+    <button id="reload-jokes">Reload Joke List</button>
+    <ul id="joke-list">
         {% for joke in jokes %}
-            <li>{{ joke }}</a></li>
+        <li>{{ joke }}</li>
         {% endfor %}
     </ul>
 
