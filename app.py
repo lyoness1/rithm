@@ -1,6 +1,7 @@
-from flask import Flask, jsonify
+from flask import Flask
 import requests
-import json
+
+from model import Joke
 
 app = Flask(__name__)
 
@@ -11,9 +12,8 @@ def hello_world():
 
 @app.route('/jokes', methods=['GET'])
 def get_jokes():
-    resp = requests.get('https://icanhazdadjoke.com/', headers={'Accept': 'application/json'})
-    joke_data = json.loads(resp.text)
-    joke_text = joke_data['joke']
+    joke = Joke()
+    return joke.get_random()
 
 
 if __name__ == '__main__':
