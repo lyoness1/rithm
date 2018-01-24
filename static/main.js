@@ -10,3 +10,17 @@ $('#reload-jokes').click(e => {
 		},
 	});
 });
+
+$('.up-vote').click(e => {
+	var joke_id = $(e.target).data('id');
+	$.ajax({
+		url: '/jokes/' + joke_id + '/up-vote',
+		type: 'post',
+		success: resp => {
+			console.log(resp);
+		},
+		error: function(xhr) {
+			//Do Something to handle error
+		},
+	});
+});
