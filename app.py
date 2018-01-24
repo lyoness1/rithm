@@ -54,6 +54,7 @@ def hello_world():
 def jokes():
     """Loads a page with twenty random jokes"""
     jokes = _get_jokes()
+
     return render_template('home.html', jokes=jokes)
 
 @app.route('/jokes/<string:joke_id>/up-vote', methods=['POST'])
