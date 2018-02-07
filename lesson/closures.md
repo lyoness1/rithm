@@ -47,14 +47,14 @@ false
 true
 ```
 
-But what if you really needed the password to be secret? It's in the global scope and is accessible to the guesser that also has access to the function 'guessPassword' that is in the global scope. 
+But what if you really needed the password to be secret? It's in the global scope and is accessible to the guesser that also has access to the function `guessPassword` that is in the global scope. 
 
 ```javascript
 > password
 abc123
 ```
 
-That wasn't very secret. How might you write a guessPassword function so the user of the function wouldn't have access to the secret value? 
+That wasn't very secret. How might you write a `guessPassword` function so the user of the function wouldn't have access to the secret value? 
 
 ### Closures
 
@@ -66,11 +66,11 @@ function addOuter(x) {
   function addInner(y) {
     return x + y;
   }
-  return addInner;
+  return addInner;  // A _reference_ to the inner function is returned; `addInner` is not invoked here. 
 }
 ```
 
-We would say that 'addInner' is a closure, because it is enclosed by 'addOuter'.
+We would say that `addInner` is a closure, because it is enclosed by 'addOuter'.
 
 What would you expect the outcome of the following code to be?
 
@@ -81,11 +81,11 @@ What would you expect the outcome of the following code to be?
 > addToFive(4)
 ```
 
-What's going on? The function `addOuter` returns a function `addInner`. The function `addInner` is a closure, so it has access to the variable `x` in the `addOuter` function's scope. When `addOuter` is invoked and assigned to a new variable we are left with code equivelent to: 
+What's going on? The function `addOuter` returns a reference to `addInner` and assigns it to a variable that can later be invoked with any argument for `y`. The function `addInner` is a **closure**, so it has access to the variable `x` in the `addOuter` function's scope. When `addOuter` is invoked and assigned to a new variable we are left with code equivelent to: 
 
 ```javascript
 function addToTwo(y) {
-  return 2 + y;  // The '2' is the value that was passed in as 'x' to 'addOuter' when 'addToTwo' was defined
+  return 2 + y;  // The '2' is the value that was passed in as 'x' to 'addOuter' when 'addToTwo' was defined. It can't be changed. 
 }
 
 function addToFive(y) {
@@ -94,6 +94,7 @@ function addToFive(y) {
 ```
 
 So the result is 
+
 ```javascript
 > addToTwo(3)
 5
