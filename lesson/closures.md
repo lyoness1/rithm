@@ -4,6 +4,7 @@ Let's start with the why. Here are two examples of times when code may not work 
 ### Example 1: The loop that stores state
 ```javascript
 var arr = []
+
 for (var i = 0; i < 5; i++) {
   arr[i] = function() {
     console.log(i);
