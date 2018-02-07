@@ -47,22 +47,25 @@ var x = 3;
 function outer() {
   var y = 7;  // The variable 'y' is available within the 'outer' function's scope
   function inner() {
-    var z = 10;
-    console.log('z: ' + z);  // The variable 'z' is availible within the 'inner' function's scope
-    console.log('y: ' + y);  // The variable 'y' is availible within the 'inner' function's scope because the 'inner' scope includes all variables above or outside of itself
-    console.log('x: ' + x);  // The variable 'x' is availible within the 'inner' function's scope because it is a global variable above the inner function's scope
+    var z = 10; // The variable 'z' is availible within the 'inner' function's scope
+    console.log('z: ' + z);
+    console.log('y: ' + y);
+    console.log('x: ' + x);
    }
-   // Make a call to the inner function to see its output
-   inner();
-   console.log('z: ' + z);  // The variable 'z' is not available outside of the 'inner' function
-   console.log('y: ' + y);  // The variable 'y' is available within the 'outer' function's scope
-   console.log('x: ' + x);  // The variable 'x' is available within the 'outer' function's scope because it is a global variable
+   inner();  // Make a call to the inner function to see its output
+   console.log('z: ' + z);
+   console.log('y: ' + y);
+   console.log('x: ' + x);
  }
  
  // See what happens...
  > outer()
  ReferenceError: z is not defined
+ ```
  
+ Where in the code was the error?
+ 
+ ```javascript 
  // Rewrite 'outer' without the reference to 'z' outside of the 'inner' scope
  function outer() {
   var y = 7;
