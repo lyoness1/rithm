@@ -30,8 +30,9 @@ Imagine you'd like to write a function to allow someone to guess a secret passwo
 var password = 'abc123'
 
 function guessPassword(guess) {
-  if guess == password: 
+  if (guess == password){ 
     return true
+  }
   return false
 }
 ```
