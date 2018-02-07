@@ -88,3 +88,6 @@ function outer() {
  x: 7
  ```
  
+ 
+ ### Closures
+ 
