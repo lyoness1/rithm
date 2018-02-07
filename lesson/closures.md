@@ -1,7 +1,8 @@
 ## CLOSURES
+### Why? What's the point? 
 Let's start with the why. Here are two examples of times when code may not work the way one would hope:
 
-### Example 1: The loop that stores state
+#### Example 1: The loop that stores state
 ```javascript
 var arr = []
 
@@ -23,7 +24,7 @@ What would you expect the outcome of the following code to be?
 
 Try it! Can you explain what's going on? Can you think of a way to get the expected result?
 
-### Example 2: The private variable
+#### Example 2: The private variable
 Imagine you'd like to write a function to allow someone to guess a secret password
 
 ```javascript
@@ -55,9 +56,11 @@ abc123
 
 That wasn't very secret. How might you write a guessPassword function so the user of the function wouldn't have access to the secret value? 
 
+### Closures
+
 A **closure** is an inner function that has access to its outer (enclosing) function's scope and variable assignments. 
 
-## Example:
+#### Example:
 ```javascript
 function addOuter(x) {
   function addInner(y) {
