@@ -5,9 +5,9 @@ Let's start with the why. Here are two examples of times when code may not work 
 ```javascript
 var arr = []
 for (var i = 0; i < 5; i++) {
-	arr[i] = function() {
-		console.log(i);
-	}
+  arr[i] = function() {
+    console.log(i);
+  }
 }
 ```
 
@@ -24,26 +24,33 @@ Try it! Can you explain what's going on? Can you think of a way to get the expec
 
 ### Example 2: The private variable
 Imagine you'd like to write a function to allow someone to guess a secret password
+
 ```javascript
 var password = 'abc123'
+
 function guessPassword(guess) {
   if guess == password: 
     return true
     return false
 }
 ```
+
 The function will work appropriately: 
+
 ```javascript
 > guessPassword('xyz987')
 false
 > guessPassword('abc123')
 true
 ```
+
 But what if you really needed the password to be secret? It's in the global scope and is accessible to the guesser that also has access to the function 'guessPassword' that is in the global scope. 
+
 ```javascript
 > password
 abc123
 ```
+
 That wasn't very secret. How might you write a guessPassword function so the user of the function wouldn't have access to the secret value? 
 
 
