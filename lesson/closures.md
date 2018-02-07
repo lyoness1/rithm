@@ -60,7 +60,7 @@ That wasn't very secret. How might you write a `guessPassword` function so the u
 
 A **closure** is an inner function that has access to its outer (enclosing) function's scope and variable assignments. 
 
-#### Example:
+#### Example 1: An adder that passes parameters to a closure
 ```javascript
 function addOuter(x) {
   function addInner(y) {
@@ -102,5 +102,42 @@ So the result is
 9
 ```
 
+#### Example 2: A greeter with hoisted variable declarations
+```javascript
+function greet() {
+  var speak() {
+    console.log(phrase);
+    var phrase = 'Hello, World!'
+  }
+  return speak;
+}
+```
 
+In this example, `speak` is a closure because it is wrapped by the outer function `greet`. What would you expect the following to output?
+
+```javascript
+> var sayHello = greet()
+> sayHello()
+```
+
+You may be wondering why this works, as the variable `phrase` isn't assigned a value until after the logging statement. This is because the variable `phrase` is _declared_ through hoisting at the time of creation, so the log statement will have access to `phrase`. The _assigned_ value of `'Hello, World!'` isn't needed until later, after it has been assigned, when `sayHello` is invoked and executed. This example demonstrates that **closures contain any and all local variables that were declared inside the outer enclosing function**.
+
+#### Example 3: Number generator that changes based on out-of-scope variable states
+In the following example, what will the output be?
+
+```javascript
+function numberGenerator() {
+  var num = 0
+  function logNumber() {
+    console.log(num);
+  }
+  num ++;
+  return logNumber;
+}
+
+> var generate = numberGenerator()
+> generate()
+```
+
+What's going on? When `numberGenerator` is invoked and assigned to the variable `generate`, all of its code is executed and the function returns before the assignment to `generate` is complete. When `generate` is then later invoked, the value of `num` will be whatever it is at the time of invocation, which, in this case, will be `1`, since `num` was incremented before `generate` was called. This example demonstrates that **closures will execute with the current state of any variables declared outside of its own scope**.
 
