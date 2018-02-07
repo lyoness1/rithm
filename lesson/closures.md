@@ -27,9 +27,9 @@ Imagine you'd like to write a function to allow someone to guess a secret passwo
 ```javascript
 var password = 'abc123'
 function guessPassword(guess) {
-	if guess == password: 
-		return true
-	return false
+  if guess == password: 
+    return true
+    return false
 }
 ```
 The function will work appropriately: 
